@@ -1,0 +1,262 @@
+"AtlasVersion" "1.0"
+"MapFile" "tutorial_m1"
+"debug" "1"
+"ModelsToCache" {
+	"good_fountain" "models/props_structures/good_fountain001.mdl"
+	"bad_fountain" "models/props_structures/bad_fountain001.mdl"
+	"good_ancient" "models/props_structures/good_ancient001.mdl"
+	"bad_ancient" "models/props_structures/bad_ancient002.mdl"
+}
+"SendInputN" {
+	"camp_blocker_battle_start" [
+		"Disable"
+	]
+	"camp_blocker_start" [
+		"Disable"
+	]
+	"camp_blocker2_start" [
+		"Disable"
+	]
+	"r5_blocker1_start" [
+		"Disable"
+	]
+	"r5_blocker2_start" [
+		"Disable"
+	]
+	"tgt_r1_blocker_start" [
+		"Disable"
+	]
+	"tgt_r2_blocker_start" [
+		"Disable"
+	]
+	"tgt_r4_blocker_to_r6_start" [
+		"Disable"
+	]
+	"tgt_r4_blocker_to_r7_start" [
+		"Disable"
+	]
+	"camp_spike_1" [
+		"Disable"
+	]
+}
+"TeleportC" {
+	"info_player_start_badguys" {
+		"x" -3250
+		"y" 1800
+		"z" 160
+	}
+}
+"TreeTrim" [
+	[ -2130 1850 128 ]
+	[ -1996 1804 128 ]
+	[ -2978 1943 128 ]
+	[ -6592 -2944 -128 ]
+]
+"CreateEntity" [
+	/*{
+		"Class" "ent_dota_fountain"
+		"x" -3700
+		"y" 1800
+		"z" 180
+		"netprops" {
+			"targetname" "ent_dota_fountain_bad"
+			"teamnumber" "3"
+			"model" "models/props_structures/bad_fountain001.mdl"
+			"thinkFunction" "OnThink"
+			"destdmgamnt_lvl1" "66"
+			"destdmgamnt_lvl2" "33"
+			"vscripts" "dota_fountain.nut"
+			"MaxAnimTime" "10"
+			"MinAnimTime" "5"
+			"renderamt" "255"
+			"rendercolor" "255 255 255"
+			"skin" "0"
+			"solid" "0"
+			"fademindist" "-1"
+			"fadescale" "1"
+		}
+	}*/
+	/*{
+		"Class" "ent_dota_fountain"
+		"x" -6000
+		"y" -3800
+		"z" 0
+		"netprops" {
+			"targetname" "ent_dota_fountain_good"
+			"teamnumber" "2"
+			"model" "models/props_structures/good_fountain001.mdl"
+			"thinkFunction" "OnThink"
+			"destdmgamnt_lvl1" "66"
+			"destdmgamnt_lvl2" "33"
+			"vscripts" "dota_fountain.nut"
+			"MaxAnimTime" "10"
+			"MinAnimTime" "5"
+			"renderamt" "255"
+			"rendercolor" "255 255 255"
+			"skin" "0"
+			"solid" "0"
+			"fademindist" "-1"
+			"fadescale" "1"
+		}
+	}*/
+	{
+		"Class" "info_courier_spawn_dire"
+		"x" -3300
+		"y" 1800
+		"z" 200
+	}
+	{
+		"Class" "info_courier_spawn_radiant"
+		"x" -5900
+		"y" -3100
+		"z" 200
+	}
+]
+"CreateUnit" [
+	{
+		"Name" "dota_fountain"
+		"Team" 3
+		"x" -3200
+		"y" 1980
+		"z" 180
+		"model" "bad_fountain"
+	}
+	{
+		"Name" "dota_fountain"
+		"Team" 2
+		"x" -6000
+		"y" -3800
+		"z" 0
+		"model" "good_fountain"
+		"netprops" {
+			"m_flModelScale" 0.5
+		}
+	}
+	{
+		"Name" "npc_dota_goodguys_fort"
+		"Team" 2
+		"x" -5560
+		"y" -3350
+		"z" 8
+		"model" "good_ancient"
+		"netprops" {
+			"m_flModelScale" 0.5
+		}
+	}
+	{
+		"Name" "npc_dota_badguys_fort"
+		"Team" 3
+		"x" -2810
+		"y" 1980
+		"z" 230
+		"model" "bad_ancient"
+		"netprops" {
+			"m_flModelScale" 0.5
+		}
+	}
+]
+//Neutral Camp Types:
+// 0: Small
+// 1: Medium
+// 2: Large
+// 3: Ancients
+// The brush size for the spawn area is set by the base location and two vectors.
+// Currently, the creep spawn is at the base point.
+// Name has to be unique
+// Not yet functioning
+"CreepCamps" [
+	{
+		"Name" "dire_ancients"
+		"Type" 0
+		"x" -830
+		"y" 3000
+		"z" 140
+		"xmin" -100
+		"ymin" -100
+		"zmin" 0
+		"xmax" 100
+		"ymax" 100
+		"zmax" 300
+	}
+	{
+		"Name" "dire_ancients_2"
+		"Type" 0
+		"x" -800
+		"y" 2200
+		"z" 140
+		"xmin" -100
+		"ymin" -100
+		"zmin" 0
+		"xmax" 100
+		"ymax" 100
+		"zmax" 300
+	}
+]
+// Create trigger_boss_attackables for each of the AttackableAreas
+"Roshan" {
+	"x" 4165
+	"y" 2226
+	"z" 120
+	"AttackableAreas" [
+		{
+			"x" 4165
+			"y" 2226
+			"z" 120
+			"xmin" -1000
+			"ymin" -1000
+			"zmin" -300
+			"xmax" 1000
+			"ymax" 1000
+			"zmax" 500
+		}
+	]
+}
+// Valid keys are 'top' 'mid' and 'bot'
+// You can safely leave out lanes, but things get weird if you add new ones
+// Make sure that you don't put spaces in lane names, at the very least
+// Towers must be declared in order of increasing importance
+// First waypoint for each waypoints series is used as the spawn location for the creeps
+"Lanes" {
+	"mid" {
+		"laneid" 1
+		"goodwaypoints" [
+			[-5350 -3000   8]
+			[-5050 -1600   8]
+			[-3660 -1250   8]
+			[-3000  -570   8]
+			[-1039  -280 128]
+			[-1270   600 256]
+			[   70  1100 256]
+			[ -670  2000 128]
+			[-3200  1980 128]
+			
+		]
+		"badwaypoints" [
+			[-1820  2000 128]
+			[ -670  2000 128]
+			[   70  1100 256]
+			[-1270   600 256]
+			[-1039  -280 128]
+			[-3000  -570   8]
+			[-3660 -1250   8]
+			[-5050 -1600   8]
+			[-5350 -3000   8]
+			[-5560 -3350   8]
+		]
+		"goodtowers" [ //Towers listed in ascending tier
+			[-3000  -570   8]
+			[-3660 -1250   8]
+			[-5350 -1600   8]
+		]
+		"badtowers" [
+			[-1270   600 256]
+			[   70  1100 256]
+			[ -670  2000 128]
+		]
+	}
+}
+// The buildings array is gone through twice; once to place all the buildings,
+// and once to link them all up so that destroying a tower removes protection
+// from the next level of buildings
+//"Buildings" {
+//}
